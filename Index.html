@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fce8f4">
+<title>Our Little Friendship Story 🦋</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --pink:#f58bbd;
+  --rose:#d75f9e;
+  --purple:#a78bfa;
+  --dark:#825c91;
+  --glass:rgba(255,255,255,.66);
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html {scroll-behavior:smooth}
+
+body {
+  font-family:'DM Sans',sans-serif;
+  color:var(--dark);
+  background:#fff5fa;
+  overflow-x:hidden;
+}
+
+button {font-family:inherit;cursor:pointer}
+
+.bg {
+  position:fixed;
+  inset:0;
+  z-index:-3;
+  background:
+    radial-gradient(ellipse at 10% 10%,#ffd1e7,transparent 45%),
+    radial-gradient(ellipse at 90% 20%,#dcd0ff,transparent 45%),
+    radial-gradient(ellipse at 50% 100%,#ffe0ec,transparent 55%),
+    #fff8fc;
+}
+
+.orb {
+  position:fixed;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:.35;
+  pointer-events:none;
+  z-index:-2;
+  background:#f3a6d0;
+  animation:orb 12s infinite alternate;
+}
+
+.orb.one {top:10%;left:-120px}
+.orb.two {bottom:5%;right:-120px;background:#b6a1ff}
+
+@keyframes orb {
+  to {transform:translate(60px,80px) scale(1.3)}
+}
+
+#particles {
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:20;
+}
+
+.particle {
+  position:absolute;
+  bottom:-40px;
+  animation:floatUp linear forwards;
+}
+
+@keyframes floatUp {
+  to {
+    transform:translateY(-115vh) rotate(360deg);
+    opacity:0;
+  }
+}
+
+h1,h2,h3 {
+  font-family:'Playfair Display',serif;
+}
+
+button:focus-visible {
+  outline:3px solid #b18ae9;
+  outline-offset:4px;
+}
+
+.hidden {display:none!important}
+
+/* WELCOME */
+
+#welcome {
+  min-height:100svh;
+  display:grid;
+  place-items:center;
+  padding:22px;
+  transition:.9s;
+}
+
+.welcome-card {
+  width:min(100%,480px);
+  padding:45px 26px;
+  text-align:center;
+  border-radius:35px;
+  border:1px solid white;
+  background:var(--glass);
+  backdrop-filter:blur(22px);
+  box-shadow:0 25px 80px #d68ab82b;
+  animation:appear 1s ease;
+}
+
+@keyframes appear {
+  from {opacity:0;transform:translateY(40px)}
+  to {opacity:1;transform:translateY(0)}
+}
+
+.flower {
+  font-size:70px;
+  display:block;
+  animation:swing 3s infinite;
+}
+
+@keyframes swing {
+  50% {transform:rotate(12deg) scale(1.1)}
+}
+
+.welcome-card h1 {
+  color:#ce669e;
+  font-size:clamp(37px,9vw,53px);
+  margin:20px 0 12px;
+}
+
+.welcome-card p {
+  line-height:1.9;
+  color:#a481a4;
+  font-size:14px;
+}
+
+.eyebrow {
+  letter-spacing:3px;
+  font-size:10px;
+  font-weight:800;
+  color:#bd81ae;
+}
+
+.btn {
+  border:0;
+  border-radius:50px;
+  padding:16px 28px;
+  color:white;
+  font-size:14px;
+  font-weight:800;
+  background:linear-gradient(120deg,#f47eb3,#ad8af7);
+  box-shadow:0 10px 30px #df83b65c;
+  transition:.3s;
+}
+
+.btn:hover {transform:translateY(-4px)}
+.btn:active {transform:scale(.96)}
+
+/* MAIN */
+
+#main {
+  opacity:0;
+  transition:opacity 1.2s;
+}
+
+#main.visible {opacity:1}
+
+nav {
+  position:sticky;
+  top:0;
+  z-index:15;
+  padding:13px 6%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:#fff9f9c9;
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid white;
+}
+
+.logo {
+  font-family:'Playfair Display',serif;
+  color:#d263a0;
+  font-weight:bold;
+  font-size:21px;
+}
+
+.music {
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+
+.music button {
+  border:1px solid #e9b2d3;
+  background:#fff;
+  color:#b65c94;
+  border-radius:30px;
+  padding:10px 13px;
+  font-weight:bold;
+  font-size:12px;
+}
+
+#volume {
+  width:75px;
+  accent-color:#d46da8;
+}
+
+/* HERO */
+
+section {
+  padding:85px 20px;
+  text-align:center;
+}
+
+.hero {
+  min-height:680px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+.hero h1 {
+  font-size:clamp(38px,9vw,68px);
+  line-height:1.2;
+  margin:20px 0;
+  background:linear-gradient(120deg,#d75d9d,#a17ce6,#ef8dbb);
+  background-clip:text;
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p {
+  color:#a77fa9;
+  font-size:14px;
+  line-height:1.9;
+}
+
+.butterflies {
+  font-size:30px;
+  margin:18px;
+  animation:fly 3s infinite ease-in-out;
+}
+
+@keyframes fly {
+  50% {transform:translateY(-13px) rotate(5deg)}
+}
+
+.number {
+  font-size:clamp(140px,35vw,220px);
+  font-family:'Playfair Display',serif;
+  font-weight:bold;
+  line-height:1.1;
+  color:#e78dbb;
+  text-shadow:0 0 45px #ee9ecb;
+  animation:glow 3s infinite alternate;
+}
+
+@keyframes glow {
+  to {text-shadow:0 0 70px #c9a5ff}
+}
+
+/* TITLES */
+
+.title {
+  font-size:clamp(30px,7vw,45px);
+  color:#c666a0;
+  margin:13px 0;
+}
+
+.subtitle {
+  color:#a98bac;
+  font-size:13px;
+  line-height:1.9;
+}
+
+/* MESSAGE */
+
+.message {
+  max-width:680px;
+  margin:35px auto 0;
+  padding:32px 25px;
+  text-align:left;
+  border-radius:28px;
+  background:var(--glass);
+  border:1px solid white;
+  box-shadow:0 20px 60px #d99cbd26;
+  backdrop-filter:blur(20px);
+  line-height:2;
+  font-size:14px;
+  white-space:pre-wrap;
+  min-height:280px;
+  color:#886a90;
+}
+
+.cursor {
+  display:inline-block;
+  width:2px;
+  height:16px;
+  background:#d46a9e;
+  animation:blink .7s infinite;
+}
+
+@keyframes blink {50%{opacity:0}}
+
+/* MEMORY */
+
+.grid {
+  max-width:920px;
+  margin:40px auto 0;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:17px;
+}
+
+.card {
+  padding:29px 15px;
+  background:var(--glass);
+  border:1px solid white;
+  border-radius:25px;
+  box-shadow:0 12px 35px #d9a0c52c;
+  transition:.4s;
+  opacity:0;
+  transform:translateY(30px);
+}
+
+.card.show {
+  opacity:1;
+  transform:translateY(0);
+}
+
+.card:hover {
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px #d9a0c54d;
+}
+
+.card span {font-size:40px}
+.card h3 {font-size:17px;color:#c96b9e;margin-top:15px}
+.card p {font-size:12px;color:#a48aa6;margin-top:9px;line-height:1.8}
+
+/* GIFT */
+
+.gift-area {
+  max-width:570px;
+  margin:35px auto 0;
+  padding:40px 20px;
+  border-radius:30px;
+  background:var(--glass);
+  border:1px solid white;
+  box-shadow:0 20px 55px #d99cbd30;
+}
+
+.gift {
+  font-size:115px;
+  cursor:pointer;
+  display:inline-block;
+  animation:bounce 2s infinite;
+}
+
+@keyframes bounce {
+  50% {transform:translateY(-12px) rotate(4deg)}
+}
+
+.gift-message {
+  max-height:0;
+  opacity:0;
+  overflow:hidden;
+  transition:1s;
+}
+
+.gift-message.open {
+  max-height:300px;
+  opacity:1;
+  margin-top:25px;
+}
+
+.gift-message h3 {
+  color:#ca659e;
+  font-size:25px;
+  margin-bottom:15px;
+}
+
+.gift-message p {
+  line-height:1.9;
+  font-size:14px;
+  color:#987c9e;
+}
+
+/* FINAL */
+
+.final {
+  background:linear-gradient(145deg,#f9c4e0,#e0d2ff,#fce5f0);
+  padding:110px 20px;
+}
+
+.final h2 {
+  font-size:clamp(33px,8vw,57px);
+  line-height:1.4;
+  color:#b85f99;
+}
+
+.final p {
+  margin:20px auto;
+  line-height:1.9;
+  color:#9876a8;
+}
+
+.reveal {
+  opacity:0;
+  transform:translateY(35px);
+  transition:.8s;
+}
+
+.reveal.active {
+  opacity:1;
+  transform:translateY(0);
+}
+
+footer {
+  text-align:center;
+  padding:30px;
+  background:#fff6fb;
+  color:#ae8bad;
+  font-size:12px;
+}
+
+@media(max-width:500px) {
+  section {padding:70px 17px}
+  .grid {gap:12px}
+  .card {padding:25px 9px}
+  .card h3 {font-size:14px}
+  .hero {min-height:570px}
+  #volume {width:58px}
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation-duration:.01ms!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="orb one"></div>
+<div class="orb two"></div>
+<div id="particles"></div>
+
+<!-- WELCOME -->
+
+<div id="welcome">
+  <div class="welcome-card">
+    <span class="flower">🌸</span>
+    <div class="eyebrow">A LITTLE GIFT FOR SOMEONE SPECIAL</div>
+    <h1>Hey Beautiful!</h1>
+    <p>I have a little surprise for you...</p>
+    <p>A little world full of smiles, friendship and magical memories. 🦋</p>
+    <button class="btn" onclick="openWebsite()">Open Your Gift 🎁</button>
+    <p style="margin-top:25px">Made with 💗 just for you</p>
+  </div>
+</div>
+
+<!-- WEBSITE -->
+
+<div id="main" class="hidden">
+
+<nav>
+  <div class="logo">Little Memories 🦋</div>
+  <div class="music">
+    <button id="musicBtn" onclick="toggleMusic()">♫ Music OFF</button>
+    <input id="volume" type="range" min="0" max="100" value="65" aria-label="Music volume" oninput="changeVolume(this.value)">
+  </div>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="eyebrow">A SPECIAL DAY • A SPECIAL FRIENDSHIP</div>
+
+  <h1>HAPPY 1 MONTH<br>OF FRIENDSHIP!</h1>
+
+  <p>30 Days of Smiles, Memories & Friendship 🦋</p>
+
+  <div class="butterflies">🦋　🌸　🦋</div>
+
+  <div class="number">30</div>
+
+  <p><b>DAYS OF BEAUTIFUL FRIENDSHIP 💗</b></p>
+  <p style="margin-top:45px">↓ A little more magic awaits ↓</p>
+</section>
+
+<!-- MESSAGE -->
+
+<section class="reveal">
+  <div class="eyebrow">WORDS FROM THE HEART</div>
+  <h2 class="title">A Little Message For You 💌</h2>
+  <p class="subtitle">Some friendships deserve a little appreciation.</p>
+
+  <div class="message">
+    <span id="typing"></span><span class="cursor" id="cursor"></span>
+  </div>
+</section>
+
+<!-- MEMORIES -->
+
+<section class="reveal">
+  <div class="eyebrow">OUR LITTLE WORLD</div>
+  <h2 class="title">Our Beautiful Friendship 🌷</h2>
+  <p class="subtitle">Four little things worth celebrating.</p>
+
+  <div class="grid">
+    <div class="card">
+      <span>🌸</span>
+      <h3>30 Days of Friendship</h3>
+      <p>A month of getting to know an amazing person.</p>
+    </div>
+
+    <div class="card">
+      <span>💬</span>
+      <h3>Countless Conversations</h3>
+      <p>Little chats that make ordinary days special.</p>
+    </div>
+
+    <div class="card">
+      <span>💗</span>
+      <h3>Beautiful Memories</h3>
+      <p>Every little moment has its own sweetness.</p>
+    </div>
+
+    <div class="card">
+      <span>🦋</span>
+      <h3>More Adventures Ahead</h3>
+      <p>Here's to many more months of friendship!</p>
+    </div>
+  </div>
+</section>
+
+<!-- GIFT -->
+
+<section class="reveal">
+  <div class="eyebrow">A SECRET SURPRISE</div>
+  <h2 class="title">A Gift Just For You 🎀</h2>
+  <p class="subtitle">Something special is waiting inside.</p>
+
+  <div class="gift-area">
+    <div class="gift" id="gift" onclick="openSurprise()">🎁</div>
+    <p id="giftHint">Tap the gift box to open it ✨</p>
+
+    <div class="gift-message" id="giftMessage">
+      <h3>Just a little reminder... 💗</h3>
+      <p>
+        You are an amazing friend, and I'm really glad
+        we became friends.
+        <br><br>
+        Never stop smiling! ❤️
+        <br><br>
+        Keep being the wonderful person you are. 🌷
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ENDING -->
+
+<section class="final">
+  <div class="butterflies">🦋 ✨ 🌸 ✨ 🦋</div>
+  <div class="eyebrow">THIS IS JUST THE BEGINNING</div>
+
+  <h2>
+    ONE MONTH DOWN...<br>
+    AND A MILLION MORE<br>
+    MEMORIES TO CREATE!
+  </h2>
+
+  <p>
+    Happy Friendship Anniversary! 🦋💗
+    <br>
+    Thank you for being such a lovely friend.
+  </p>
+
+  <button class="btn" onclick="replay()">Replay Our Little Surprise ✨</button>
+</section>
+
+<footer>
+  Made with 💗, friendship and a little magic.
+  <br><br>
+  A Little Gift For You 🦋
+</footer>
+
+</div>
+
+<script>
+
+/* FLOATING PARTICLES */
+
+const particleBox=document.getElementById('particles');
+const symbols=['💗','✨','🌸','🦋','💕','✧'];
+
+function particle() {
+  const p=document.createElement('span');
+  p.className='particle';
+  p.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+  p.style.left=Math.random()*100+'%';
+  p.style.fontSize=(12+Math.random()*18)+'px';
+  p.style.animationDuration=(7+Math.random()*7)+'s';
+  particleBox.appendChild(p);
+  setTimeout(()=>p.remove(),15000);
+}
+
+setInterval(particle,700);
+
+/* WELCOME */
+
+function openWebsite() {
+  const w=document.getElementById('welcome');
+  const m=document.getElementById('main');
+
+  w.style.opacity='0';
+  w.style.transform='scale(1.08)';
+
+  setTimeout(()=>{
+    w.classList.add('hidden');
+    m.classList.remove('hidden');
+
+    requestAnimationFrame(()=>m.classList.add('visible'));
+
+    startTyping();
+    confetti();
+    window.scrollTo(0,0);
+  },850);
+}
+
+/* MESSAGE TYPING */
+
+const message=`Hey! ❤️
+
+Can you believe it's already been one month since we became friends? Time really flies! I'm genuinely happy that I got a friend like you. Thank you for all the fun conversations, laughs and little memories. You are an amazing person, and I hope our friendship keeps growing stronger with every passing day.
+
+Stay happy, keep smiling and always be yourself! 🌷
+
+Happy One Month of Friendship! 💗`;
+
+let typingStarted=false;
+
+function startTyping() {
+  if(typingStarted)return;
+  typingStarted=true;
+
+  let i=0;
+  const target=document.getElementById('typing');
+
+  function type() {
+    if(i<message.length) {
+      target.textContent+=message.charAt(i);
+      i++;
+      setTimeout(type,message[i-1]==='\n'?180:23);
+    } else {
+      document.getElementById('cursor').style.display='none';
+    }
+  }
+
+  type();
+}
+
+/* SCROLL ANIMATIONS */
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting) {
+      entry.target.classList.add('active');
+
+      entry.target.querySelectorAll('.card').forEach((c,i)=>{
+        setTimeout(()=>c.classList.add('show'),i*180);
+      });
+
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:.12});
+
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+/* GIFT */
+
+let opened=false;
+
+function openSurprise() {
+  if(opened)return;
+  opened=true;
+
+  document.getElementById('gift').textContent='🎀';
+  document.getElementById('giftHint').textContent='A little happiness, just for you! 💗';
+
+  setTimeout(()=>{
+    document.getElementById('giftMessage').classList.add('open');
+    confetti();
+  },400);
+}
+
+/* CONFETTI */
+
+function confetti() {
+  const icons=['💗','🌸','✨','🦋','💕','🎀'];
+
+  for(let i=0;i<35;i++) {
+    setTimeout(()=>{
+      const p=document.createElement('span');
+      p.className='particle';
+      p.textContent=icons[Math.floor(Math.random()*icons.length)];
+      p.style.left=Math.random()*100+'%';
+      p.style.fontSize=(15+Math.random()*20)+'px';
+      p.style.animationDuration=(3+Math.random()*4)+'s';
+      particleBox.appendChild(p);
+      setTimeout(()=>p.remove(),7000);
+    },i*30);
+  }
+}
+
+/* ORIGINAL MULTI-LAYER MUSIC
+   Generated with Web Audio API.
+   This is an original synthesized melody,
+   not a recording of a copyrighted song.
+*/
+
+let audio=null;
+let master=null;
+let musicOn=false;
+let musicInterval=null;
+let melodyIndex=0;
+let volume=.65;
+
+const melody=[
+  [261.63,329.63,392.00],
+  [293.66,349.23,440.00],
+  [329.63,392.00,493.88],
+  [293.66,349.23,440.00],
+  [261.63,329.63,392.00],
+  [349.23,440.00,523.25],
+  [392.00,493.88,587.33],
+  [329.63,392.00,493.88]
+];
+
+function setupAudio() {
+  const AudioContext=window.AudioContext||window.webkitAudioContext;
+  if(!AudioContext)return false;
+
+  if(!audio) {
+    audio=new AudioContext();
+    master=audio.createGain();
+    master.gain.value=volume;
+    master.connect(audio.destination);
+  }
+
+  return true;
+}
+
+function note(freq,start,duration,type,level) {
+  const osc=audio.createOscillator();
+  const gain=audio.createGain();
+
+  osc.type=type;
+  osc.frequency.setValueAtTime(freq,start);
+
+  gain.gain.setValueAtTime(.0001,start);
+  gain.gain.exponentialRampToValueAtTime(level,start+.12);
+  gain.gain.exponentialRampToValueAtTime(.0001,start+duration);
+
+  osc.connect(gain);
+  gain.connect(master);
+
+  osc.start(start);
+  osc.stop(start+duration+.1);
+}
+
+function playChord() {
+  if(!audio||!musicOn)return;
+
+  const chord=melody[melodyIndex%melody.length];
+  const now=audio.currentTime;
+
+  /* Soft piano-like melody */
+  note(chord[0]*2,now,1.6,'sine',.13);
+  note(chord[1]*2,now+.25,1.5,'triangle',.10);
+  note(chord[2]*2,now+.5,1.8,'sine',.11);
+
+  /* Warm background harmony */
+  note(chord[0],now,2.5,'sine',.055);
+  note(chord[1],now,2.5,'sine',.04);
+
+  /* Gentle bell accents */
+  note(chord[2]*2,now+.7,2,'sine',.075);
+
+  melodyIndex++;
+}
+
+function musicLoop() {
+  if(!musicOn)return;
+  playChord();
+  musicInterval=setTimeout(musicLoop,1450);
+}
+
+async function toggleMusic() {
+  const btn=document.getElementById('musicBtn');
+
+  if(!setupAudio()) {
+    btn.textContent='Music unavailable';
+    return;
+  }
+
+  if(audio.state==='suspended')await audio.resume();
+
+  musicOn=!musicOn;
+
+  if(musicOn) {
+    btn.textContent='♫ Music ON';
+    musicLoop();
+  } else {
+    clearTimeout(musicInterval);
+    btn.textContent='♫ Music OFF';
+  }
+}
+
+function changeVolume(value) {
+  volume=Number(value)/100;
+
+  if(master) {
+    master.gain.setTargetAtTime(
+      volume,
+      audio.currentTime,
+      .08
+    );
+  }
+}
+
+/* REPLAY */
+
+function replay() {
+  opened=false;
+  typingStarted=false;
+
+  document.getElementById('gift').textContent='🎁';
+  document.getElementById('giftMessage').classList.remove('open');
+  document.getElementById('giftHint').textContent='Tap the gift box to open it ✨';
+
+  document.getElementById('typing').textContent='';
+  document.getElementById('cursor').style.display='inline-block';
+
+  document.querySelectorAll('.card').forEach(c=>c.classList.remove('show'));
+
+  document.querySelectorAll('.reveal').forEach(el=>{
+    el.classList.remove('active');
+    observer.observe(el);
+  });
+
+  const main=document.getElementById('main');
+  main.classList.remove('visible');
+  main.classList.add('hidden');
+
+  const welcome=document.getElementById('welcome');
+  welcome.classList.remove('hidden');
+  welcome.style.opacity='1';
+  welcome.style.transform='scale(1)';
+
+  window.scrollTo(0,0);
+}
+
+</script>
+
+</body>
+</html>
